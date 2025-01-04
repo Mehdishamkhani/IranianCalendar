@@ -170,7 +170,8 @@ class IranianCalendar {
      *
      */
     constructor(timeStamp: String) {
-        setGregorianDateByDateTime(LocalDateTime.parse(timeStamp))
+        dateTime = LocalDateTime.parse(timeStamp)
+        setGregorianDateByDateTime(dateTime!!)
     }
 
 
@@ -181,9 +182,8 @@ class IranianCalendar {
      *
      */
     constructor(epochInMillis: Long, timeZone: TimeZone = TimeZone.currentSystemDefault()) {
-        setGregorianDateByDateTime(
-            Instant.fromEpochMilliseconds(epochInMillis).toLocalDateTime(timeZone)
-        )
+        dateTime = Instant.fromEpochMilliseconds(epochInMillis).toLocalDateTime(timeZone)
+        setGregorianDateByDateTime(dateTime!!)
     }
 
 
@@ -194,8 +194,6 @@ class IranianCalendar {
      */
     val localTime: String
         get() = "${dateTime?.toTimeString()}"
-
-
 
 
     /**
@@ -235,8 +233,6 @@ class IranianCalendar {
      */
     val iranianShortDate: String
         get() = "$iranianYear/$iranianMonth/$iranianDay"
-
-
 
 
     /**
